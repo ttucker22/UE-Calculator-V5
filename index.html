@@ -1198,6 +1198,10 @@ function showCalculators() {
                                         <p class="reference">Reference: Tables 16-19 & 16-18 on pages 500 & 499 of The AMA Guides 5th Ed.</p>
                                         <p class="total-impairment"><strong>Total: <span id="shoulder-synovial-hypertrophy-total">0 UE = 0 WPI</span></strong></p>
                                     `;
+                                const checkboxes = calculatorCard.querySelectorAll('.synovial-checkbox');
+                                checkboxes.forEach(checkbox => {
+                                    checkbox.addEventListener('change', calculateShoulderSynovialHypertrophy);
+                                });
                         } else if (cardValue === 'shoulder' && option === 'Instability/Subluxation/Dislocation') {
                         calculatorCard.innerHTML = `
                             <h3>Shoulder - Instability/Subluxation/Dislocation</h3>
