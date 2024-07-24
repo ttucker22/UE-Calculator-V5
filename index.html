@@ -1333,6 +1333,28 @@ function calculateShoulderROM() {
             }
         }
 
+        function calculateShoulderSynovialHypertrophy() {
+    const checkboxes = document.querySelectorAll('.synovial-hypertrophy-table input[type="checkbox"]');
+    let totalUEImpairment = 0;
+
+    checkboxes.forEach(checkbox => {
+        if (checkbox.checked) {
+            totalUEImpairment += parseInt(checkbox.value);
+            
+            // Uncheck other checkboxes in the same row
+            const row = checkbox.closest('tr');
+            row.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+                if (cb !== checkbox) {
+                    cb.checked = false;
+                }
+            });
+        }
+    });
+
+    const totalWPI = Math.round(totalUEImpairment * 0.6);
+    document.getElementById('shoulder-synovial-hypertrophy-total').textContent = `${totalUEImpairment} UE = ${totalWPI} WPI`;
+}
+
         function updateTotalShoulderStrengthImpairment() {
             const movements = ['flexion', 'extension', 'abduction', 'adduction', 'internal-rotation', 'external-rotation'];
             let totalUEImpairment = 0;
