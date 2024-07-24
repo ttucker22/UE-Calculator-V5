@@ -1198,6 +1198,11 @@ function showCalculators() {
                                         <p class="reference">Reference: Tables 16-19 & 16-18 on pages 500 & 499 of The AMA Guides 5th Ed.</p>
                                         <p class="total-impairment"><strong>Total: <span id="shoulder-synovial-hypertrophy-total">0 UE = 0 WPI</span></strong></p>
                                     `;
+                            const checkboxes = calculatorCard.querySelectorAll('.synovial-checkbox');
+                            checkboxes.forEach(checkbox => {
+                                checkbox.addEventListener('change', calculateShoulderSynovialHypertrophy);
+                            });
+                        }
                         } else if (cardValue === 'shoulder' && option === 'Instability/Subluxation/Dislocation') {
                         calculatorCard.innerHTML = `
                             <h3>Shoulder - Instability/Subluxation/Dislocation</h3>
@@ -1333,22 +1338,21 @@ function calculateShoulderROM() {
             }
         }
 
-        function calculateShoulderSynovialHypertrophy() {
-    const checkboxes = document.querySelectorAll('.synovial-hypertrophy-table input[type="checkbox"]');
-    let totalUEImpairment = 0;
-
-    checkboxes.forEach(checkbox => {
-        if (checkbox.checked) {
-            totalUEImpairment += parseInt(checkbox.value);
-            
-            // Uncheck other checkboxes in the same row
-            const row = checkbox.closest('tr');
-            row.querySelectorAll('input[type="checkbox"]').forEach(cb => {
-                if (cb !== checkbox) {
-                    cb.checked = false;
-                }
-            });
+function calculateShoulderSynovialHypertrophy(event) {
+    const changedCheckbox = event.target;
+    const joint = changedCheckbox.dataset.joint;
+    
+    // Uncheck other checkboxes for the same joint
+    document.querySelectorAll(`.synovial-checkbox[data-joint="${joint}"]`).forEach(checkbox => {
+        if (checkbox !== changedCheckbox) {
+            checkbox.checked = false;
         }
+    });
+
+    // Calculate total impairment
+    let totalUEImpairment = 0;
+    document.querySelectorAll('.synovial-checkbox:checked').forEach(checkbox => {
+        totalUEImpairment += parseInt(checkbox.value);
     });
 
     const totalWPI = Math.round(totalUEImpairment * 0.6);
