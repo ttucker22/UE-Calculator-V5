@@ -1161,6 +1161,43 @@ function showCalculators() {
                             </div>
                             <p class="total-impairment"><strong>Total: <span id="shoulder-arthroplasty-total">0 UE = 0 WPI</span></strong></p>
                         `;
+                        } else if (cardValue === 'shoulder' && option === 'Synovial Hypertrophy') {
+                            calculatorCard.innerHTML = `
+                                <h3>Shoulder - Synovial Hypertrophy</h3>
+                                <table class="synovial-hypertrophy-table">
+                                    <tr>
+                                        <th>Shoulder Joints</th>
+                                        <th>Max UE</th>
+                                        <th>Mild (10%)</th>
+                                        <th>Moderate (20%)</th>
+                                        <th>Severe (30%)</th>
+                                    </tr>
+                                    <tr>
+                                        <td>Glenohumeral</td>
+                                        <td>60</td>
+                                        <td><input type="checkbox" id="glenohumeral-mild" value="6"> 6</td>
+                                        <td><input type="checkbox" id="glenohumeral-moderate" value="12"> 12</td>
+                                        <td><input type="checkbox" id="glenohumeral-severe" value="18"> 18</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Acromioclavicular</td>
+                                        <td>25</td>
+                                        <td><input type="checkbox" id="acromioclavicular-mild" value="3"> 3</td>
+                                        <td><input type="checkbox" id="acromioclavicular-moderate" value="5"> 5</td>
+                                        <td><input type="checkbox" id="acromioclavicular-severe" value="8"> 8</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Sternoclavicular</td>
+                                        <td>5</td>
+                                        <td><input type="checkbox" id="sternoclavicular-mild" value="1"> 1</td>
+                                        <td><input type="checkbox" id="sternoclavicular-moderate" value="1"> 1</td>
+                                        <td><input type="checkbox" id="sternoclavicular-severe" value="2"> 2</td>
+                                    </tr>
+                                    </table>
+                                        <p class="instructions">Instructions: Check up to one box for each joint as applicable.</p>
+                                        <p class="reference">Reference: Tables 16-19 & 16-18 on pages 500 & 499 of The AMA Guides 5th Ed.</p>
+                                        <p class="total-impairment"><strong>Total: <span id="shoulder-synovial-hypertrophy-total">0 UE = 0 WPI</span></strong></p>
+                                    `;
                         } else if (cardValue === 'shoulder' && option === 'Instability/Subluxation/Dislocation') {
                         calculatorCard.innerHTML = `
                             <h3>Shoulder - Instability/Subluxation/Dislocation</h3>
