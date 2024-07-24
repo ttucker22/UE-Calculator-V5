@@ -1269,14 +1269,6 @@ function setupCalculatorEventListeners() {
                 });
             }
 
-            if (selectedOptions.shoulder && selectedOptions.shoulder.includes('Synovial Hypertrophy')) {
-                const checkboxes = document.querySelectorAll('.synovial-hypertrophy-table input[type="checkbox"]');
-                checkboxes.forEach(checkbox => {
-                    checkbox.addEventListener('change', calculateShoulderSynovialHypertrophy);
-                    }
-                });
-            }
-
             if (selectedOptions.shoulder && selectedOptions.shoulder.includes('Arthroplasty')) {
                 console.log("Setting up arthroplasty event listeners");
                 const arthroplastyOptions = document.querySelectorAll('input[name="shoulder-arthroplasty"]');
