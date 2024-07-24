@@ -217,26 +217,6 @@
             color: #1E90FF;
             font-weight: bold;
         }
-        .synovial-hypertrophy-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 15px;
-        }
-        .synovial-hypertrophy-table th, .synovial-hypertrophy-table td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: center;
-        }
-        .synovial-hypertrophy-table th {
-            background-color: #f2f2f2;
-        }
-        .synovial-hypertrophy-table input[type="checkbox"] {
-            margin-right: 5px;
-        }
-        .instructions, .reference {
-            font-size: 0.9em;
-            margin-bottom: 10px;
-        }
         .total-impairment {
             font-weight: bold;
             margin-top: 10px;
@@ -1203,51 +1183,6 @@ function showCalculators() {
                         calculatorCard.querySelectorAll('input[name="shoulder-instability"]').forEach(option => {
                             option.addEventListener('change', calculateShoulderInstability);
                         });
-                            } else if (cardValue === 'shoulder' && option === 'Synovial Hypertrophy') {
-                calculatorCard.innerHTML = `
-                    <h3>Shoulder - Synovial Hypertrophy</h3>
-                    <table class="synovial-hypertrophy-table">
-                        <thead>
-                            <tr>
-                                <th>Shoulder Joints</th>
-                                <th>Max UE</th>
-                                <th>Mild (10%)</th>
-                                <th>Moderate (20%)</th>
-                                <th>Severe (30%)</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Glenohumeral</td>
-                                <td>60</td>
-                                <td><input type="checkbox" name="glenohumeral" value="6"> 6</td>
-                                <td><input type="checkbox" name="glenohumeral" value="12"> 12</td>
-                                <td><input type="checkbox" name="glenohumeral" value="18"> 18</td>
-                            </tr>
-                            <tr>
-                                <td>Acromioclavicular</td>
-                                <td>25</td>
-                                <td><input type="checkbox" name="acromioclavicular" value="3"> 3</td>
-                                <td><input type="checkbox" name="acromioclavicular" value="5"> 5</td>
-                                <td><input type="checkbox" name="acromioclavicular" value="8"> 8</td>
-                            </tr>
-                            <tr>
-                                <td>Sternoclavicular</td>
-                                <td>5</td>
-                                <td><input type="checkbox" name="sternoclavicular" value="1"> 1</td>
-                                <td><input type="checkbox" name="sternoclavicular" value="1"> 1</td>
-                                <td><input type="checkbox" name="sternoclavicular" value="2"> 2</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <p class="instructions">Instructions: Check up to one box for each joint as applicable.</p>
-                    <p class="reference">Reference: Tables 16-19 & 16-18 on pages 500 & 499 of The AMA Guides 5th Ed.</p>
-                    <p class="total-impairment"><strong>Total: <span id="shoulder-synovial-hypertrophy-total">0 UE = 0 WPI</span></strong></p>
-                `;
-                calculatorCard.querySelectorAll('.synovial-hypertrophy-table input[type="checkbox"]').forEach(checkbox => {
-                    checkbox.addEventListener('change', calculateSynovialHypertrophy);
-                });
-            }
                     } else {
                         calculatorCard.innerHTML = `
                             <h3>${cardValue.charAt(0).toUpperCase() + cardValue.slice(1)} - ${option}</h3>
